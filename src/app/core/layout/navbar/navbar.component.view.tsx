@@ -17,7 +17,10 @@ function NavbarViewComponent({
 }: NavbarViewComponentProps) {
   return (
     <header className="w-full flex items-center justify-between gap-4 bg-[var(--secondary-color)] py-2 px-5">
-      <img src="/Logo/main-logo.png" className="w-50 h-auto rounded-md" />
+      <img
+        src={`${import.meta.env.BASE_URL}Logo/main-logo.png`}
+        className="w-50 h-auto rounded-md"
+      />
       <button className="block lg:hidden" onClick={toggleMenu}>
         <FontAwesomeIcon
           icon={faBars}
@@ -65,7 +68,10 @@ function NavbarViewComponent({
         className={`${showMenu ? 'flex' : 'hidden'} fixed inset-0 z-50 w-full md:left-auto md:w-100 h-full flex-col bg-[var(--secondary-color)] md:bg-[var(--tertiary-color)]`}
       >
         <div className="flex justify-between items-center p-5">
-          <img src="/Logo/main-logo.png" className="w-50 h-auto rounded-md" />
+          <img
+            src={`${import.meta.env.BASE_URL}Logo/main-logo.png`}
+            className="w-50 h-auto rounded-md"
+          />
           <FontAwesomeIcon
             icon={faXmark}
             className="text-2xl text-[var(--tertiary-color)] md:text-[var(--secondary-color)]"

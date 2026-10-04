@@ -21,7 +21,12 @@ const MainPageView = () => {
   return (
     <>
       <main className="w-full flex flex-col">
-        <section className="w-full bg-[url('/MainPage/hero.png')] md:grid md:grid-cols-2 bg-center bg-cover">
+        <section
+          className="w-full md:grid md:grid-cols-2 bg-center bg-cover"
+          style={{
+            backgroundImage: `url("${import.meta.env.BASE_URL}MainPage/hero.png")`,
+          }}
+        >
           <div className="w-full flex flex-col bg-[color-mix(in_srgb,var(--secondary-color)_60%,transparent)] md:bg-[transparent] p-5 md:p-10">
             <label className="uppercase eyebrow-text text-[var(--tertiary-color)]">
               Precision Today. Stronger Tomorrow.
@@ -123,7 +128,7 @@ const MainPageView = () => {
             <div className="grid grid-cols-[2fr_4fr] lg:flex lg:flex-col overflow-hidden rounded-lg">
               <div className="relative min-h-0 overflow-hidden lg:h-50 lg:object-cover">
                 <img
-                  src="/MainPage/CNCMachining.png"
+                  src={`${import.meta.env.BASE_URL}MainPage/CNCMachining.png`}
                   className="absolute inset-0 h-full w-full object-cover"
                 />
               </div>
@@ -146,7 +151,7 @@ const MainPageView = () => {
             <div className="grid grid-cols-[2fr_4fr] lg:flex lg:flex-col overflow-hidden rounded-lg">
               <div className="relative min-h-0 overflow-hidden lg:h-50 lg:object-cover">
                 <img
-                  src="/MainPage/ColdExtrusion.png"
+                  src={`${import.meta.env.BASE_URL}MainPage/ColdExtrusion.png`}
                   className="absolute inset-0 h-full w-full object-bottom-right object-cover"
                 />
               </div>
@@ -307,7 +312,7 @@ const MainPageView = () => {
           <div className="grid grid-flow-col auto-cols-[minmax(150px,_1fr)] overflow-x-scroll md:grid-cols-5 gap-3 lg:gap-5 mt-5">
             <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg">
               <img
-                src="/MainPage/Automobile.png"
+                src={`${import.meta.env.BASE_URL}MainPage/Automobile.png`}
                 className="overflow-hidden rounded-lg"
               />
               <label className="card-heading mx-3 my-2 md:my-1">
@@ -320,7 +325,7 @@ const MainPageView = () => {
 
             <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg">
               <img
-                src="/MainPage/Construction.png"
+                src={`${import.meta.env.BASE_URL}MainPage/Construction.png`}
                 className="overflow-hidden rounded-lg"
               />
               <label className="card-heading mx-3 my-2 lg:my-1">
@@ -333,7 +338,7 @@ const MainPageView = () => {
 
             <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg">
               <img
-                src="/MainPage/Medical.png"
+                src={`${import.meta.env.BASE_URL}MainPage/Medical.png`}
                 className="overflow-hidden rounded-lg"
               />
               <label className="card-heading mx-3 my-2 lg:my-1">Medical</label>
@@ -344,7 +349,7 @@ const MainPageView = () => {
 
             <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg">
               <img
-                src="/MainPage/Agriculture.png"
+                src={`${import.meta.env.BASE_URL}MainPage/Agriculture.png`}
                 className="overflow-hidden rounded-lg"
               />
               <label className="card-heading mx-3 my-2 lg:my-1">
@@ -357,7 +362,7 @@ const MainPageView = () => {
 
             <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg">
               <img
-                src="/MainPage/Electrical.png"
+                src={`${import.meta.env.BASE_URL}MainPage/Electrical.png`}
                 className="overflow-hidden rounded-lg"
               />
               <label className="card-heading mx-3 my-2 md:my-3 lg:my-1">
@@ -487,7 +492,7 @@ const MainPageView = () => {
 
         <section className="mx-5 md:mx-0 my-5 grid grid-cols-1 md:grid-cols-2 gap-5">
           <img
-            src="/MainPage/SDforgmac.png"
+            src={`${import.meta.env.BASE_URL}MainPage/SDforgmac.png`}
             className="w-full h-60 object-cover object-center rounded-lg self-center"
           />
           <div className="flex flex-col gap-2 md:p-3">

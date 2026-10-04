@@ -2,8 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faAngleDown,
   faAngleUp,
-  faArrowDown,
-  faArrowRight,
   faEnvelope,
   faLocationDot,
   faPhone,
@@ -28,7 +26,10 @@ function FooterViewComponent({
     <footer className="bg-[var(--secondary-color)] p-5 flex flex-col gap-3">
       <section className="flex flex-col md:flex-row gap-10 justify-around">
         <div className="md:w-150 flex flex-col gap-3">
-          <img src="/Logo/main-logo.png" className="w-50" />
+          <img
+            src={`${import.meta.env.BASE_URL}Logo/main-logo.png`}
+            className="w-50"
+          />
           <p className="body-text-small text-[var(--tertiary-color)]">
             Precision manufacturing partner delivering high quality forged
             components, precision manufacturing and cold extrusion solutions for
