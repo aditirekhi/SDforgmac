@@ -1,0 +1,245 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap');
+
+:root {
+  /* Brand colors */
+  --primary-color: #830415;
+  --secondary-color: #010101;
+  --tertiary-color: #f5f0e8;
+  --metallic-color: #b8a58d;
+
+  /* Text / surface colors */
+  --white: #ffffff;
+  --text-color: #111111;
+  --muted-text-color: #5f5f5f;
+
+  /* Fonts */
+  --heading-font: 'Montserrat', Arial, sans-serif;
+  --body-font: 'Inter', Arial, sans-serif;
+
+  /* Common UI */
+  --border-radius: 10px;
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-color);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@layer base {
+  button {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.hero-title {
+  font-family: var(--heading-font);
+  font-size: clamp(2.6rem, 5vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.hero-description {
+  max-width: 62ch;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.section-heading {
+  font-family: var(--heading-font);
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.section-heading-small {
+  font-family: var(--heading-font);
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.card-heading {
+  font-family: var(--heading-font);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.body-text {
+  font-family: var(--body-font);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.body-text-small {
+  font-family: var(--body-font);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.eyebrow-text {
+  font-family: var(--heading-font);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.button-text {
+  font-family: var(--body-font);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.label-text {
+  font-family: var(--body-font);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.stat-number {
+  font-family: var(--heading-font);
+  font-size: clamp(1.5rem, 2.25vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.stat-label {
+  font-family: var(--body-font);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* =========================================================
+   TEXT HELPERS
+   ========================================================= */
+
+.text-accent {
+  color: var(--primary-color);
+}
+
+.text-muted {
+  color: var(--muted-text-color);
+}
+
+.text-light {
+  color: var(--white);
+}
+
+.reading-width {
+  max-width: 68ch;
+}
+
+/* =========================================================
+   SURFACES
+   ========================================================= */
+
+.dark-section {
+  color: var(--white);
+  background: var(--secondary-color);
+}
+
+.warm-section {
+  background: var(--tertiary-color);
+}
+
+.translucent-dark {
+  background: rgba(17, 17, 17, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.translucent-light {
+  background: rgba(245, 240, 232, 0.9);
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* =========================================================
+   COMMON LAYOUT
+   ========================================================= */
+
+.section {
+  padding-block: var(--section-spacing);
+}
+
+.section-content {
+  display: grid;
+  gap: var(--content-gap);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .hero-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-title {
+    font-size: clamp(2.1rem, 10vw, 3rem);
+  }
+
+  .section-heading {
+    font-size: clamp(1.7rem, 7vw, 2.15rem);
+  }
+
+  .section-heading-small {
+    font-size: 1.35rem;
+  }
+
+  .body-text {
+    font-size: 0.9375rem;
+  }
+
+  .hero-description,
+  .reading-width {
+    max-width: 100%;
+  }
+}
