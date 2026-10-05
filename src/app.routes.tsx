@@ -1,10 +1,10 @@
 import { Navigate, type RouteObject } from 'react-router-dom';
-import HomePage from './app/features/main-page/main-page.component.view';
+import HomePage from './app/features/main-page/main-page.component';
 import { lazy } from 'react';
 
 const Home = HomePage;
 const CNCMachining = lazy(
-  () => import('./app/features/cnc-machining/cnc-machining.component.view')
+  () => import('./app/features/cnc-machining/cnc-machining.component')
 );
 
 export const routes: RouteObject[] = [

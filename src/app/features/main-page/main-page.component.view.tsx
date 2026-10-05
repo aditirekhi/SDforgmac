@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef } from 'react';
+import type { RefObject } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -18,37 +18,11 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import SharedSectionHeaderViewComponent from '../../shared/components/shared-section-header.component.view';
 
-const MainPageView = () => {
-  const mainRef = useRef<HTMLElement | null>(null);
+type MainPageViewProps = {
+  mainRef: RefObject<HTMLElement | null>;
+};
 
-  useEffect(() => {
-    const mainElement = mainRef.current;
-    if (!mainElement) return;
-
-    const revealElements =
-      mainElement.querySelectorAll<HTMLElement>('.scroll-reveal');
-
-    if (!('IntersectionObserver' in window)) {
-      revealElements.forEach((element) => element.classList.add('is-visible'));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries, currentObserver) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            currentObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -5% 0px' }
-    );
-
-    revealElements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
-  }, []);
-
+const MainPageView = ({ mainRef }: MainPageViewProps) => {
   return (
     <>
       <main ref={mainRef} className="w-full flex flex-col">
