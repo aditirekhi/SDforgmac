@@ -25,7 +25,7 @@ type MainPageViewProps = {
 const MainPageView = ({ mainRef }: MainPageViewProps) => {
   return (
     <>
-      <main ref={mainRef} className="w-full flex flex-col">
+      <main ref={mainRef} className="mt-15 w-full flex flex-col">
         <section
           className="scroll-reveal reveal-stagger w-full md:grid md:grid-cols-2 bg-center bg-cover"
           style={{

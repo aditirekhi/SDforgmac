@@ -16,7 +16,7 @@ function NavbarViewComponent({
   toggleMenu,
 }: NavbarViewComponentProps) {
   return (
-    <header className="motion-enter w-full flex items-center justify-between gap-4 bg-[var(--secondary-color)] py-2 px-5">
+    <header className="fixed top-0 right-0 z-50 w-full flex items-center justify-between gap-4 bg-[var(--secondary-color)] py-2 px-5">
       <img
         src={`${import.meta.env.BASE_URL}Logo/main-logo.png`}
         className="w-50 h-auto rounded-md"
@@ -71,7 +71,7 @@ function NavbarViewComponent({
       </nav>
       <nav
         aria-hidden={!showMenu}
-        className={`fixed inset-0 z-50 w-full md:left-auto md:w-100 h-full flex flex-col bg-[var(--secondary-color)] md:bg-[var(--tertiary-color)] transition-[transform,opacity,visibility] duration-300 ease-out ${showMenu ? 'visible translate-x-0 opacity-100' : 'invisible translate-x-full opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 z-50 w-full md:left-auto md:w-100 h-full flex flex-col bg-[var(--secondary-color)] md:bg-[var(--tertiary-color)] transition-[transform,visibility] duration-300 ease-out ${showMenu ? 'visible translate-x-0' : 'invisible translate-x-full pointer-events-none'}`}
       >
         <div className="flex justify-between items-center p-5">
           <img

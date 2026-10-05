@@ -1,5 +1,12 @@
 import type { RefObject } from 'react';
 import SharedSectionHeaderViewComponent from '../../shared/components/shared-section-header.component.view';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCalendarDays,
+  faCheckCircle,
+  faGear,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 
 type EquipmentSlide = {
   image: string;
@@ -25,7 +32,7 @@ export default function CNCMachiningViewComponent({
   onNextEquipmentSlide,
 }: CNCMachiningViewProps) {
   return (
-    <main ref={mainRef} className="w-full flex flex-col">
+    <main ref={mainRef} className="mt-15 w-full flex flex-col">
       <section
         style={{
           backgroundImage: `url("${import.meta.env.BASE_URL}CNCMachining/hero.png")`,
@@ -52,6 +59,60 @@ export default function CNCMachiningViewComponent({
             High-quality CNC machining solutions for demanding industries
             worldwide.
           </p>
+        </div>
+      </section>
+
+      <section className="scroll-reveal reveal-stagger grid grid-cols-2 md:flex gap-5 justify-around items-center bg-[var(--secondary-color)] p-5">
+        <div className="flex gap-2 items-center">
+          <span className="flex items-center justify-around border border-[var(--primary-color)] rounded-full p-2">
+            <FontAwesomeIcon
+              icon={faCalendarDays}
+              className="text-3xl text-[var(--primary-color)]"
+            />
+          </span>
+          <span className="flex flex-col gap-1 text-[var(--tertiary-color)]">
+            <label className="section-heading-small">10+</label>
+            <label className="eyebrow-text">Years Of Experience</label>
+          </span>
+        </div>
+
+        <div className="flex gap-2 items-center">
+          <span className="flex items-center justify-around border border-[var(--primary-color)] rounded-full p-2">
+            <FontAwesomeIcon
+              icon={faUser}
+              className="text-3xl text-[var(--primary-color)]"
+            />
+          </span>
+          <span className="flex flex-col gap-1 text-[var(--tertiary-color)]">
+            <label className="section-heading-small">50+</label>
+            <label className="eyebrow-text">Satisfied Customers</label>
+          </span>
+        </div>
+
+        <div className="flex gap-2 items-center">
+          <span className="flex items-center justify-around border border-[var(--primary-color)] rounded-full p-2">
+            <FontAwesomeIcon
+              icon={faGear}
+              className="text-3xl text-[var(--primary-color)]"
+            />
+          </span>
+          <span className="flex flex-col gap-1 text-[var(--tertiary-color)]">
+            <label className="section-heading-small">10M+</label>
+            <label className="eyebrow-text">Components Delivered</label>
+          </span>
+        </div>
+
+        <div className="flex gap-2 items-center">
+          <span className="flex items-center justify-around border border-[var(--primary-color)] rounded-full p-2">
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              className="text-3xl text-[var(--primary-color)]"
+            />
+          </span>
+          <span className="flex flex-col gap-1 text-[var(--tertiary-color)]">
+            <label className="section-heading-small">99.8%</label>
+            <label className="eyebrow-text">Years Of Experience</label>
+          </span>
         </div>
       </section>
 
