@@ -16,12 +16,17 @@ function NavbarViewComponent({
   toggleMenu,
 }: NavbarViewComponentProps) {
   return (
-    <header className="w-full flex items-center justify-between gap-4 bg-[var(--secondary-color)] py-2 px-5">
+    <header className="motion-enter w-full flex items-center justify-between gap-4 bg-[var(--secondary-color)] py-2 px-5">
       <img
         src={`${import.meta.env.BASE_URL}Logo/main-logo.png`}
         className="w-50 h-auto rounded-md"
       />
-      <button className="block lg:hidden" onClick={toggleMenu}>
+      <button
+        className="block lg:hidden transition-transform duration-200 hover:scale-110 focus-visible:scale-110"
+        onClick={toggleMenu}
+        aria-expanded={showMenu}
+        aria-label="Toggle navigation menu"
+      >
         <FontAwesomeIcon
           icon={faBars}
           className="text-2xl text-[var(--tertiary-color)]"
@@ -65,7 +70,8 @@ function NavbarViewComponent({
         </NavLink>
       </nav>
       <nav
-        className={`${showMenu ? 'flex' : 'hidden'} fixed inset-0 z-50 w-full md:left-auto md:w-100 h-full flex-col bg-[var(--secondary-color)] md:bg-[var(--tertiary-color)]`}
+        aria-hidden={!showMenu}
+        className={`fixed inset-0 z-50 w-full md:left-auto md:w-100 h-full flex flex-col bg-[var(--secondary-color)] md:bg-[var(--tertiary-color)] transition-[transform,opacity,visibility] duration-300 ease-out ${showMenu ? 'visible translate-x-0 opacity-100' : 'invisible translate-x-full opacity-0 pointer-events-none'}`}
       >
         <div className="flex justify-between items-center p-5">
           <img

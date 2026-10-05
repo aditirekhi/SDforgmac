@@ -1,4 +1,5 @@
-﻿import { NavLink } from 'react-router-dom';
+﻿import { useEffect, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowRight,
@@ -18,11 +19,41 @@ import {
 import SharedSectionHeaderViewComponent from '../../shared/components/shared-section-header.component.view';
 
 const MainPageView = () => {
+  const mainRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const mainElement = mainRef.current;
+    if (!mainElement) return;
+
+    const revealElements =
+      mainElement.querySelectorAll<HTMLElement>('.scroll-reveal');
+
+    if (!('IntersectionObserver' in window)) {
+      revealElements.forEach((element) => element.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -5% 0px' }
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <main className="w-full flex flex-col">
+      <main ref={mainRef} className="w-full flex flex-col">
         <section
-          className="w-full md:grid md:grid-cols-2 bg-center bg-cover"
+          className="scroll-reveal reveal-stagger w-full md:grid md:grid-cols-2 bg-center bg-cover"
           style={{
             backgroundImage: `url("${import.meta.env.BASE_URL}MainPage/hero.png")`,
           }}
@@ -44,13 +75,13 @@ const MainPageView = () => {
             <div className="flex flex-col md:flex-row gap-5">
               <NavLink
                 to="/cncMachining"
-                className="button-text bg-[var(--primary-color)] text-[var(--tertiary-color)] rounded-lg px-3 py-4"
+                className="button-text bg-[var(--primary-color)] text-[var(--tertiary-color)] rounded-lg px-3 py-4 transition-transform duration-200 hover:-translate-y-1 focus-visible:-translate-y-1"
               >
                 CNC Machining Services
               </NavLink>
               <NavLink
                 to="/coldExtrusion"
-                className="button-text border border-[var(--primary-color)] text-[var(--primary-color)] rounded-lg px-3 py-4"
+                className="button-text border border-[var(--primary-color)] text-[var(--primary-color)] rounded-lg px-3 py-4 transition-transform duration-200 hover:-translate-y-1 focus-visible:-translate-y-1"
               >
                 Cold Extrusion Services
               </NavLink>
@@ -58,7 +89,7 @@ const MainPageView = () => {
           </div>
         </section>
 
-        <section className="grid grid-cols-2 md:flex gap-5 justify-around items-center bg-[var(--secondary-color)] p-5">
+        <section className="scroll-reveal reveal-stagger grid grid-cols-2 md:flex gap-5 justify-around items-center bg-[var(--secondary-color)] p-5">
           <div className="flex gap-2 items-center">
             <span className="flex items-center justify-around border border-[var(--primary-color)] rounded-full p-2">
               <FontAwesomeIcon
@@ -112,7 +143,7 @@ const MainPageView = () => {
           </div>
         </section>
 
-        <section className="mx-5 my-5 md:mx-10 ">
+        <section className="scroll-reveal mx-5 my-5 md:mx-10 ">
           <div className="md:flex md:flex-col lg:flex-row justify-between items-start lg:items-center">
             <SharedSectionHeaderViewComponent
               smallSectionTitle="Our Expertise"
@@ -124,8 +155,8 @@ const MainPageView = () => {
             </p>
           </div>
 
-          <div className="mt-5 flex flex-col lg:grid lg:grid-cols-2 gap-3">
-            <div className="grid grid-cols-[2fr_4fr] lg:flex lg:flex-col overflow-hidden rounded-lg">
+          <div className="reveal-stagger mt-5 flex flex-col lg:grid lg:grid-cols-2 gap-3">
+            <div className="grid grid-cols-[2fr_4fr] lg:flex lg:flex-col overflow-hidden rounded-lg transition-transform duration-300 hover:-translate-y-1">
               <div className="relative min-h-0 overflow-hidden lg:h-50 lg:object-cover">
                 <img
                   src={`${import.meta.env.BASE_URL}MainPage/CNCMachining.png`}
@@ -148,7 +179,7 @@ const MainPageView = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-[2fr_4fr] lg:flex lg:flex-col overflow-hidden rounded-lg">
+            <div className="grid grid-cols-[2fr_4fr] lg:flex lg:flex-col overflow-hidden rounded-lg transition-transform duration-300 hover:-translate-y-1">
               <div className="relative min-h-0 overflow-hidden lg:h-50 lg:object-cover">
                 <img
                   src={`${import.meta.env.BASE_URL}MainPage/ColdExtrusion.png`}
@@ -175,7 +206,7 @@ const MainPageView = () => {
           </div>
         </section>
 
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-5 m-5">
+        <section className="scroll-reveal grid grid-cols-1 lg:grid-cols-2 gap-5 m-5">
           <div className="flex flex-col gap-5">
             <SharedSectionHeaderViewComponent
               sectionTitle="Engineered for Excellence"
@@ -242,11 +273,11 @@ const MainPageView = () => {
           </div>
         </section>
 
-        <section className="py-5 flex flex-col-reverse md:grid md:grid-cols-2 items-center gap-5 bg-[color-mix(in_srgb,var(--primary-color)_5%,transparent)]">
+        <section className="scroll-reveal reveal-stagger py-5 flex flex-col-reverse md:grid md:grid-cols-2 items-center gap-5 bg-[color-mix(in_srgb,var(--primary-color)_5%,transparent)]">
           <div className="h-75 overflow-hidden rounded-lg">
             <img
               src="MainPage/Quality.png"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
               alt="Quality inspection"
             />
           </div>
@@ -297,7 +328,7 @@ const MainPageView = () => {
           </div>
         </section>
 
-        <section className="my-5 mx-5 lg:mx-10">
+        <section className="scroll-reveal reveal-stagger my-5 mx-5 lg:mx-10">
           <div className="flex justify-between items-center">
             <SharedSectionHeaderViewComponent
               sectionTitle="Powering Progress Across Industries"
@@ -309,8 +340,8 @@ const MainPageView = () => {
             </p>
           </div>
 
-          <div className="grid grid-flow-col auto-cols-[minmax(150px,_1fr)] overflow-x-scroll md:grid-cols-5 gap-3 lg:gap-5 mt-5">
-            <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg">
+          <div className="reveal-stagger grid grid-flow-col auto-cols-[minmax(150px,_1fr)] overflow-x-scroll md:grid-cols-5 gap-3 lg:gap-5 mt-5">
+            <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg transition-transform duration-300 hover:-translate-y-1">
               <img
                 src={`${import.meta.env.BASE_URL}MainPage/Automobile.png`}
                 className="overflow-hidden rounded-lg"
@@ -323,7 +354,7 @@ const MainPageView = () => {
               </p>
             </span>
 
-            <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg">
+            <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg transition-transform duration-300 hover:-translate-y-1">
               <img
                 src={`${import.meta.env.BASE_URL}MainPage/Construction.png`}
                 className="overflow-hidden rounded-lg"
@@ -336,7 +367,7 @@ const MainPageView = () => {
               </p>
             </span>
 
-            <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg">
+            <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg transition-transform duration-300 hover:-translate-y-1">
               <img
                 src={`${import.meta.env.BASE_URL}MainPage/Medical.png`}
                 className="overflow-hidden rounded-lg"
@@ -347,7 +378,7 @@ const MainPageView = () => {
               </p>
             </span>
 
-            <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg">
+            <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg transition-transform duration-300 hover:-translate-y-1">
               <img
                 src={`${import.meta.env.BASE_URL}MainPage/Agriculture.png`}
                 className="overflow-hidden rounded-lg"
@@ -360,7 +391,7 @@ const MainPageView = () => {
               </p>
             </span>
 
-            <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg">
+            <span className="flex flex-col bg-[var(--secondary-color)] text-[var(--tertiary-color)] rounded-lg transition-transform duration-300 hover:-translate-y-1">
               <img
                 src={`${import.meta.env.BASE_URL}MainPage/Electrical.png`}
                 className="overflow-hidden rounded-lg"
@@ -375,14 +406,14 @@ const MainPageView = () => {
           </div>
         </section>
 
-        <section className="my-5 flex flex-col px-5 my-5 w-full">
+        <section className="scroll-reveal my-5 flex flex-col px-5 my-5 w-full">
           <span className="mx-10">
             <SharedSectionHeaderViewComponent
               sectionTitle="From Design to Delivery"
               smallSectionTitle="Our Process"
             ></SharedSectionHeaderViewComponent>
           </span>
-          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 mt-10 gap-6 w-full">
+          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 mt-10 gap-6 w-full">
             <div className="md:col-span-2 lg:col-span-1 relative rounded-xl bg-[var(--secondary-color)] text-(var(--tertiary-color)) p-2">
               <div className="absolute top-4 md:-top-7 md:left-1/2 flex h-14 w-14 -translate-x-1/2 items-center justify-center rounded-full border-2 border-[var(--primary-color)] bg-[var(--secondary-color)] text-[var(--tertiary-color)] body-text">
                 01
@@ -490,7 +521,7 @@ const MainPageView = () => {
           </div>
         </section>
 
-        <section className="mx-5 md:mx-0 my-5 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <section className="scroll-reveal reveal-stagger mx-5 md:mx-0 my-5 grid grid-cols-1 md:grid-cols-2 gap-5">
           <img
             src={`${import.meta.env.BASE_URL}MainPage/SDforgmac.png`}
             className="w-full h-60 object-cover object-center rounded-lg self-center"

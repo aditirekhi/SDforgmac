@@ -23,7 +23,7 @@ function FooterViewComponent({
   toggleContactUs,
 }: FooterViewComponentProps) {
   return (
-    <footer className="bg-[var(--secondary-color)] p-5 flex flex-col gap-3">
+    <footer className="motion-enter motion-enter-delay-2 bg-[var(--secondary-color)] p-5 flex flex-col gap-3">
       <section className="flex flex-col md:flex-row gap-10 justify-around">
         <div className="md:w-150 flex flex-col gap-3">
           <img
@@ -48,26 +48,42 @@ function FooterViewComponent({
             <span className="block md:hidden">
               <FontAwesomeIcon
                 icon={showQuickLinks ? faAngleUp : faAngleDown}
+                className="transition-transform duration-200"
                 onClick={toggleQuickLink}
               ></FontAwesomeIcon>
             </span>
           </label>
           <div
-            className={`lg:flex lg:flex-col lg:gap-3 ${showQuickLinks ? 'flex flex-col gap-1' : 'hidden'}`}
+            className={`lg:flex lg:flex-col lg:gap-3 ${showQuickLinks ? 'motion-enter flex flex-col gap-1' : 'hidden'}`}
           >
-            <NavLink to="/home" className="body-text-small">
+            <NavLink
+              to="/home"
+              className="body-text-small transition-colors duration-200 hover:text-[var(--primary-color)]"
+            >
               Home
             </NavLink>
-            <NavLink to="/cncMachining" className="body-text-small">
+            <NavLink
+              to="/cncMachining"
+              className="body-text-small transition-colors duration-200 hover:text-[var(--primary-color)]"
+            >
               CNC Machining
             </NavLink>
-            <NavLink to="/coldExtrusion" className="body-text-small">
+            <NavLink
+              to="/coldExtrusion"
+              className="body-text-small transition-colors duration-200 hover:text-[var(--primary-color)]"
+            >
               Cold Extrusion
             </NavLink>
-            <NavLink to="/aboutUs" className="body-text-small">
+            <NavLink
+              to="/aboutUs"
+              className="body-text-small transition-colors duration-200 hover:text-[var(--primary-color)]"
+            >
               About Us
             </NavLink>
-            <NavLink to="/contactUs" className="body-text-small">
+            <NavLink
+              to="/contactUs"
+              className="body-text-small transition-colors duration-200 hover:text-[var(--primary-color)]"
+            >
               Contact Us
             </NavLink>
           </div>
@@ -80,12 +96,13 @@ function FooterViewComponent({
             <span className="block md:hidden">
               <FontAwesomeIcon
                 icon={showContactUs ? faAngleUp : faAngleDown}
+                className="transition-transform duration-200"
                 onClick={toggleContactUs}
               ></FontAwesomeIcon>
             </span>
           </label>
           <div
-            className={`lg:flex lg:flex-col lg:gap-3 ${showContactUs ? 'flex flex-col gap-3' : 'hidden'}`}
+            className={`lg:flex lg:flex-col lg:gap-3 ${showContactUs ? 'motion-enter flex flex-col gap-3' : 'hidden'}`}
           >
             <span className="grid grid-cols-[1fr_6fr] gap-2 items-center">
               <FontAwesomeIcon
@@ -125,7 +142,7 @@ function FooterViewComponent({
               placeholder="Enter You Email"
               className="p-2 border border-[var(--tertiary-color)] rounded-xl"
             ></input>
-            <button className="px-2 bg-[var(--primary-color)] rounded-xl">
+            <button className="px-2 bg-[var(--primary-color)] rounded-xl transition-transform duration-200 hover:-translate-y-0.5 hover:brightness-110 focus-visible:-translate-y-0.5">
               Submit
             </button>
           </span>
