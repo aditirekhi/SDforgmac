@@ -9,6 +9,9 @@ const CNCMachining = lazy(
 const ColdExtrusion = lazy(
   () => import('./app/features/cold-extrusion/cold-extrusion.component')
 );
+const AboutUs = lazy(
+  () => import('./app/features/about-us/about-us.component')
+);
 
 export const routes: RouteObject[] = [
   {
@@ -27,7 +30,10 @@ export const routes: RouteObject[] = [
     path: '/coldExtrusion',
     element: <ColdExtrusion />,
   },
-  { path: '/aboutUs' },
+  {
+    path: '/aboutUs',
+    element: <AboutUs />,
+  },
   {
     path: '/contactUs',
   },
