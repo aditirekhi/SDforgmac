@@ -1,5 +1,5 @@
-@import 'tailwindcss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap');
+@import 'tailwindcss';
 
 :root {
   /* Brand colors */
@@ -107,11 +107,13 @@ p {
   line-height: 1.65;
 }
 
-.body-text-small {
-  font-family: var(--body-font);
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.55;
+@layer components {
+  .body-text-small {
+    font-family: var(--body-font);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
 }
 
 .eyebrow-text {

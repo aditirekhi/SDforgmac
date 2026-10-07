@@ -12,6 +12,9 @@ const ColdExtrusion = lazy(
 const AboutUs = lazy(
   () => import('./app/features/about-us/about-us.component')
 );
+const ContactUs = lazy(
+  () => import('./app/features/contact-us/contact-us.component')
+);
 
 export const routes: RouteObject[] = [
   {
@@ -36,6 +39,7 @@ export const routes: RouteObject[] = [
   },
   {
     path: '/contactUs',
+    element: <ContactUs />,
   },
 ];
 

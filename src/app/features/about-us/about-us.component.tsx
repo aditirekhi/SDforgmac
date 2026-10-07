@@ -5,7 +5,7 @@ import {
   faGlobe,
   faShieldHalved,
 } from '@fortawesome/free-solid-svg-icons';
-import AboutUsViewComponent from './about-us-component.view';
+import AboutUsViewComponent from './about-us.component.view';
 
 const strengths = [
   {
@@ -66,7 +66,7 @@ export default function AboutUsComponent() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -5% 0px' },
+      { threshold: 0.12, rootMargin: '0px 0px -5% 0px' }
     );
 
     revealElements.forEach((element) => observer.observe(element));
